@@ -1,17 +1,64 @@
-function calculate() {
-    let wins = Number(document.getElementById("wins").value);
-    let kills = Number(document.getElementById("kills").value);
-    let beds = Number(document.getElementById("beds").value);
-    let finalKills = Number(document.getElementById("finalKills").value);
-    let finalDeaths = Number(document.getElementById("finalDeaths").value);
-    let games = Number(document.getElementById("games").value);
+function searchPlayer() {
+    const username = document.getElementById("playerInput").value.trim();
+    const result = document.getElementById("result");
 
-    let winRate = (wins / games) * 100;
-    let killsPerGame = kills / games;
-    let fkdr = finalKills / finalDeaths;
+    if (!username) {
+        result.innerHTML = 
+            <p class="error">Please enter a Minecraft username.</p>
+        ;
+        return;
+    }
 
-    document.getElementById("result").innerHTML =
-        "Win Rate: " + winRate.toFixed(2) + "%<br>" +
-        "Kills/Game: " + killsPerGame.toFixed(2) + "<br>" +
-        "FKDR: " + fkdr.toFixed(2);
+    result.innerHTML = 
+        <div class="player-card">
+            <h2>${username}</h2>
+
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-name">Wins</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Losses</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">W/L</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Kills</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Deaths</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Final Kills</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Final Deaths</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Beds</div>
+                    <div class="stat-value">—</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-name">Games</div>
+                    <div class="stat-value">—</div>
+                </div>
+            </div>
+        </div>
+    ;
 }
