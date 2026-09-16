@@ -1,16 +1,40 @@
-function searchPlayer() {
-    const username = document.getElementById("playerInput").value.trim();
-    const result = document.getElementById("result");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    if (!username) {
-        result.innerHTML = '<p class="error">Введите ник игрока.</p>';
-        return;
-    }
+    <title>AgeraPvP BedWars Stats</title>
+    <meta name="description" content="Check AgeraPvP BedWars player statistics.">
 
-    result.innerHTML = 
-        <div class="player-card">
-            <h2>${username}</h2>
-            <p>Кнопка работает! Сейчас подключим Agera API.</p>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>AgeraPvP BedWars Stats</h1>
+        <p>Check player statistics</p>
+    </header>
+
+    <main>
+        <div class="search-box">
+            <input
+                type="text"
+                id="playerInput"
+                placeholder="Enter Minecraft username..."
+                maxlength="16"
+            >
+
+            <button id="searchButton" type="button">
+                Search
+            </button>
         </div>
-    ;
-}
+
+        <div id="result"></div>
+    </main>
+
+    <script src="./script.js"></script>
+
+</body>
+</html>
