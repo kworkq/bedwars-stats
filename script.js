@@ -1,4 +1,4 @@
-function searchPlayer() {
+async function searchPlayer() {
     const username = document.getElementById("playerInput").value.trim();
     const result = document.getElementById("result");
 
@@ -11,54 +11,32 @@ function searchPlayer() {
 
     result.innerHTML = 
         <div class="player-card">
-            <h2>${username}</h2>
-
-            <div class="stats-grid">
-                <div class="stat">
-                    <div class="stat-name">Wins</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Losses</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">W/L</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Kills</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Deaths</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Final Kills</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Final Deaths</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Beds</div>
-                    <div class="stat-value">—</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-name">Games</div>
-                    <div class="stat-value">—</div>
-                </div>
-            </div>
+            <h2>Loading ${username}...</h2>
         </div>
     ;
-}
+
+    try {
+        // Здесь позже будет адрес нашего backend:
+        const response = await fetch(
+            YOUR_BACKEND_URL/player/${encodeURIComponent(username)}
+        );
+
+        if (!response.ok) {
+            throw new Error("Player not found");
+        }
+
+        const data = await response.json();
+
+        result.innerHTML = `
+            <div class="player-card">
+                <h2>${data.username}</h2>
+
+                <div class="stats-grid">
+                    <div class="stat">
+                        <div class="stat-name">Wins</div>
+                        <div class="stat-value">${data.wins ?? "—"}</div>
+                    </div>
+
+                    <div class="stat">
+                        <div class="stat-name">Losses</div>
+                        <
