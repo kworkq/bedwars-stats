@@ -3,40 +3,44 @@ async function searchPlayer() {
     const result = document.getElementById("result");
 
     if (!username) {
-        result.innerHTML = 
-            <p class="error">Please enter a Minecraft username.</p>
-        ;
+        result.innerHTML = <p class="error">Введите ник игрока.</p>;
         return;
     }
 
-    result.innerHTML = 
-        <div class="player-card">
-            <h2>Loading ${username}...</h2>
-        </div>
-    ;
+    result.innerHTML = <p>Загрузка статистики ${username}...</p>;
 
     try {
-        // Здесь позже будет адрес нашего backend:
         const response = await fetch(
-            YOUR_BACKEND_URL/player/${encodeURIComponent(username)}
+            https://api.agerapvp.club/v1/player/profile/${encodeURIComponent(username)},
+            {
+                headers: {
+                    "X-Api-Key": "db6a5857-e587-48ba-8220-a8456117eb38"
+                }
+            }
         );
 
         if (!response.ok) {
-            throw new Error("Player not found");
+            throw new Error("API error: " + response.status);
         }
 
         const data = await response.json();
 
-        result.innerHTML = `
+        console.log(data);
+
+        result.innerHTML = 
             <div class="player-card">
-                <h2>${data.username}</h2>
+                <h2>${username}</h2>
+                <pre>${JSON.stringify(data, null, 2)}</pre>
+            </div>
+        ;
 
-                <div class="stats-grid">
-                    <div class="stat">
-                        <div class="stat-name">Wins</div>
-                        <div class="stat-value">${data.wins ?? "—"}</div>
-                    </div>
+    } catch (error) {
+        console.error(error);
 
-                    <div class="stat">
-                        <div class="stat-name">Losses</div>
-                        <
+        result.innerHTML = 
+            <p class="error">
+                Не удалось получить статистику.
+            </p>
+        ;
+    }
+}
