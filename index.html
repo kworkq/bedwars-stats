@@ -1,49 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>BedWars Stats</title>
+    <meta name="description" content="Check Hypixel BedWars player statistics.">
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>BedWars Stats</h1>
+    <header>
+        <h1>BedWars Stats</h1>
+        <p>Check Hypixel BedWars player statistics</p>
+    </header>
 
-    <p>
-        Wins:
-        <input id="wins" type="number" placeholder="100">
-    </p>
+    <main>
 
-    <p>
-        Kills:
-        <input id="kills" type="number" placeholder="500">
-    </p>
+        <div class="search-box">
+            <input
+                type="text"
+                id="playerInput"
+                placeholder="Enter Minecraft username..."
+                maxlength="16"
+            >
 
-    <p>
-        Beds:
-        <input id="beds" type="number" placeholder="80">
-    </p>
+            <button onclick="searchPlayer()">
+                Search
+            </button>
+        </div>
 
-    <p>
-        Final Kills:
-        <input id="finalKills" type="number" placeholder="300">
-    </p>
+        <div id="result"></div>
 
-    <p>
-        Final Deaths:
-        <input id="finalDeaths" type="number" placeholder="100">
-    </p>
-
-    <p>
-        Games:
-        <input id="games" type="number" placeholder="200">
-    </p>
-
-    <button onclick="calculate()">Calculate</button>
-
-    <h2>Results</h2>
-
-    <p id="result">Enter your stats and press Calculate.</p>
+    </main>
 
     <script src="script.js"></script>
 
