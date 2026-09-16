@@ -1,127 +1,42 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-    font-family: Arial, sans-serif;
-    background: #0f1117;
-    color: white;
-    min-height: 100vh;
-}
+    <title>AgeraPvP BedWars Stats</title>
+    <meta name="description" content="Check AgeraPvP BedWars player statistics.">
 
-header {
-    text-align: center;
-    padding: 60px 20px 30px;
-}
+    <link rel="stylesheet" href="./style.css">
+</head>
 
-header h1 {
-    font-size: 44px;
-    margin-bottom: 10px;
-}
+<body>
 
-header p {
-    color: #9ca3af;
-    font-size: 18px;
-}
+    <header>
+        <h1>AgeraPvP BedWars Stats</h1>
+        <p>Check AgeraPvP BedWars player statistics</p>
+    </header>
 
-main {
-    width: 100%;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 30px 20px 60px;
-}
+    <main>
 
-.search-box {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-}
+        <div class="search-box">
+            <input
+                type="text"
+                id="playerInput"
+                placeholder="Enter Minecraft username..."
+                maxlength="16"
+            >
 
-.search-box input {
-    flex: 1;
-    padding: 16px;
-    border: 1px solid #292d3a;
-    border-radius: 10px;
-    background: #1b1f2a;
-    color: white;
-    font-size: 16px;
-    outline: none;
-}
+            <button id="searchButton" type="button">
+                Search
+            </button>
+        </div>
 
-.search-box input:focus {
-    border-color: #5865f2;
-}
+        <div id="result"></div>
 
-.search-box button {
-    padding: 16px 28px;
-    border: none;
-    border-radius: 10px;
-    background: #5865f2;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
+    </main>
 
-.search-box button:hover {
-    background: #4752c4;
-}
+    <script src="./script.js"></script>
 
-#result {
-    margin-top: 35px;
-}
-
-.player-card {
-    background: #171a23;
-    border: 1px solid #292d3a;
-    border-radius: 16px;
-    padding: 30px;
-}
-
-.player-card h2 {
-    font-size: 30px;
-    margin-bottom: 25px;
-    text-align: center;
-}
-
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-}
-
-.stat {
-    background: #1e222d;
-    border-radius: 12px;
-    padding: 20px;
-    text-align: center;
-}
-
-.stat-name {
-    color: #9ca3af;
-    font-size: 14px;
-    margin-bottom: 8px;
-}
-
-.stat-value {
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.error {
-    text-align: center;
-    color: #ff6b6b;
-    margin-top: 20px;
-}
-
-@media (max-width: 650px) {
-    .search-box {
-        flex-direction: column;
-    }
-
-    .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+</body>
+</html>
